@@ -1,0 +1,353 @@
+body {
+    font-family: 'Roboto',sans-serif,Arial;
+    font-weight: 400;
+    background-color: #020202;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+
+
+header {
+    width: 1200px;
+    max-width: 80%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 999;
+    gap: 2rem;
+}
+
+header nav {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    gap: 2rem;
+    border-radius: 3px;
+}
+
+header nav:hover {
+    color: #fff;
+    background-color: #8711c1;
+}
+
+header nav a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    letter-spacing: 0.1rem;
+}
+
+
+/* slider */
+.slider {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -50px;
+    position: relative;
+}
+
+.slider .list .item {
+    position: absolute;
+    inset: 0 0 0 0;
+}
+
+.slider .list .item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider .list .item .detail {
+    position: absolute;
+    top: 20%;
+    width: 1200px;
+    max-width: 80%;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 0 4px 3px #000;
+}
+
+.slider .list .item .detail .title {
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.slider .list .item .detail .name {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    letter-spacing: 0.1rem;
+    line-height: 3.5rem;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(#28b8d5, #020344);
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}
+
+.slider .list .item .detail figure {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+
+/* Tumbnail */
+.tumbnail {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 999;
+    display: flex;
+    gap: 20px;
+}
+
+.tumbnail .item {
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+
+.tumbnail .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.tumbnail .item .detail {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    right: 10px;
+}
+
+.tumbnail .item .detail .name {
+    font-weight: 900;
+    font-size: 1rem;
+    text-align: right;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.tumbnail .item .detail blockquote {
+    font-size: 0.7rem;
+    font-weight: 100;
+    text-align: right;
+    text-shadow: 1px 1px 1px #000;
+}
+
+/* arrows */
+
+.arrows {
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 1;
+}
+
+.arrows button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+.arrows button:hover {
+    background-color: #1efa43;
+    color: #fff;
+}
+
+
+
+/* animation */
+.slider .list .item:nth-child(1) {
+    z-index: 1;
+}
+
+.slider .list .item:nth-child(1) .title,
+.slider .list .item:nth-child(1) .name,
+.slider .list .item:nth-child(1) figure {
+    transform: translateY(50px);
+    filter: blur(50px);
+    opacity: 0;
+    animation: showdetail 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showdetail {
+    to {
+        transform: translateY(0);
+    filter: blur(0);
+    opacity: 1;
+    }
+}
+
+.slider .list .item:nth-child(1) .title {
+    animation-delay: 1s;
+}
+.slider .list .item:nth-child(1) .name {
+    animation-delay: 1.2s;
+}
+.slider .list .item:nth-child(1) figure {
+    animation-delay: 1.4s;
+}
+
+
+/* action next */
+.slider.next .list .item:nth-child(1) > img {
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    left: 50%;
+    bottom:50px;
+    border-radius: 15px;
+    animation: growimage 0.5s linear 1 forwards;
+}
+
+
+@keyframes growimage {
+    to {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+
+.slider.next .tumbnail .item:nth-last-child(1) {
+    width: 0;
+    overflow: hidden;
+    opacity:0;
+    animation: showtumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes showtumbnail {
+    to {
+        width: 150px;
+        opacity: 1;
+    }
+}
+
+.slider.next .tumbnail {
+    transform: translateX(150px);
+    animation: transformtumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes transformtumbnail {
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* action prev */
+.slider.prev .list .item:nth-child(2) {
+    z-index: 2;
+}
+.slider.prev .list .item:nth-child(2) > img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: shrinkimage 0.5s linear 1 forwards;
+}
+
+@keyframes shrinkimage {
+    to {
+        width: 150px;
+        height: 220px;
+        border-radius: 15px;
+        left: 50%;
+        bottom: 50px;
+    }
+}
+
+.slider.prev .tumbnail .item:nth-child(1) {
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: showtumbnail 0.5s linear 1 forwards
+}
+
+.slider.prev .list .item:nth-child(2) .name,
+.slider.prev .list .item:nth-child(2) .title,
+.slider.prev .list .item:nth-child(2) figure {
+    animation: hidedetail 0.5s 1s linear 1 forwards;
+}
+
+@keyframes hidedetail {
+    to {
+        transform : translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+.slider.next .arrows button,
+.slider.prev .arrows button {
+    pointer-events: none;
+}
+
+.loading-bar {
+    width: 0%;
+    height: 5px;
+    background-color: #f80;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+
+}
+
+.slider.next .loading-bar,
+.slider.prev .loading-bar {
+    width: 100%;
+    animation: loadingtime 2s linear 1 forwards;
+}
+
+@keyframes loadingtime {
+    to {
+        width: 0;
+    }
+}
+
+
+/* mobile */
+@media screen and (max-width: 678px) {
+    .slider .list .item .detail .name {
+        font-size: 2.8rem;
+        line-height: 2.8rem;
+    }
+}
+
+
+
+
+
+
